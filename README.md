@@ -1,6 +1,10 @@
 # TURNCOAT! KILLER! LIAR! THIEF!
 > Criminal with protection of the law!
 
+Install dependencies:
+```shell
+pip3 install requests
+```
 
 Run and believe:
 ```shell
