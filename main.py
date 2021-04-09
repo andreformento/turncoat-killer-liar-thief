@@ -20,11 +20,13 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 wait_when_change_minutes=1
 
 def send_message(message):
-    return requests.post(
+    response = requests.post(
             url=f"{telegram_base_url}/sendMessage",
             data={"chat_id": chat_id, "text": message},
             timeout=2
         ).json()
+    log.info(f"message '{message}' sent")
+    return response
 
 def do_i_need_to_kill_the_president():
     try:
@@ -45,7 +47,7 @@ def do_i_need_to_kill_the_president():
         return (True, False, 666)
 
 def main():
-    log.info("We need to stay alive until the last fucking politician dies! Up the Irons")
+    send_message("We need to stay alive until the last fucking politician dies! Up the Irons")
     while True:
         (kill_now, vaccines_only_for_entrepreneurs, status_code) = do_i_need_to_kill_the_president()
         log.info(f"vaccines_only_for_entrepreneurs? {vaccines_only_for_entrepreneurs} :: {status_code}")
