@@ -18,6 +18,7 @@ validation_url="https://pronto.blumenau.sc.gov.br/pronto/agendamentovacinacaoint
 log = logging.getLogger('fuck_app')
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(message)s')
 wait_when_change_minutes=1
+polling_time_seconds=60
 
 def send_message(message):
     response = requests.post(
@@ -54,7 +55,7 @@ def main():
         if not vaccines_only_for_entrepreneurs:
             send_message(f"{status_code} será? https://pronto.blumenau.sc.gov.br/pronto/agendamentovacinacaointerno.aspx")
             time.sleep(wait_when_change_minutes * 60)
-        time.sleep(2.5)
+        time.sleep(polling_time_seconds)
 
 if __name__ == "__main__":
     main()
