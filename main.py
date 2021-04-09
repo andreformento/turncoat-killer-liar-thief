@@ -41,11 +41,11 @@ def do_i_need_to_kill_the_president():
         # True until the world change
         return (True, vaccines_only_for_entrepreneurs, current_status_response.status_code)
     except Exception as e:
-        log.error(f"Oops... {e}")
+        log.error(f"Rolling, turning, diving, going in again {e}")
         return (True, False, 666)
 
 def main():
-    log.info("We need to stay alive until the last fucking politician dies!")
+    log.info("We need to stay alive until the last fucking politician dies! Up the Irons")
     while True:
         (kill_now, vaccines_only_for_entrepreneurs, status_code) = do_i_need_to_kill_the_president()
         log.info(f"vaccines_only_for_entrepreneurs? {vaccines_only_for_entrepreneurs} :: {status_code}")
