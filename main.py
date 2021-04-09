@@ -7,7 +7,9 @@ http_api_token = os.getenv('HTTP_API_TOKEN')
 if not http_api_token:
     raise Exception('HTTP_API_TOKEN env not found')
 
-chat_id = "@turncoatKillerLiarThief"
+chat_id = os.getenv('CHAT_ID')
+if not chat_id:
+    raise Exception('CHAT_ID env not found')
 
 telegram_base_url=f"https://api.telegram.org/bot{http_api_token}"
 

@@ -2,7 +2,12 @@
 > Criminal with protection of the law!
 
 
-Run and believe: `python3 main.py`
+Run and believe:
+```shell
+export HTTP_API_TOKEN="get your token -> https://t.me/botfather"
+export CHAT_ID="@turncoatKillerLiarThief"
+python3 main.py
+```
 
 ![Anti-flag](https://github.com/andreformento/turncoat-killer-liar-thief/blob/main/anti-flag.png)
 
