@@ -27,18 +27,22 @@ def send_message(message):
         ).json()
 
 def do_i_need_to_kill_the_president():
-    current_status_response = requests.get(
-            url=validation_url,
-            allow_redirects=False,
-            timeout=2
-        )
+    try:
+        current_status_response = requests.get(
+                url=validation_url,
+                allow_redirects=False,
+                timeout=2
+            )
 
-    vaccines_only_for_entrepreneurs = current_status_response and \
-           current_status_response.status_code == 301 and \
-           current_status_response.headers and \
-           "Estamos+aguardando+novo+lote+de+vacina+para+abertura+de+novas+vagas" in current_status_response.headers['Location']
-    # True until the world change
-    return (True, vaccines_only_for_entrepreneurs, current_status_response.status_code)
+        vaccines_only_for_entrepreneurs = current_status_response and \
+            current_status_response.status_code == 301 and \
+            current_status_response.headers and \
+            "Estamos+aguardando+novo+lote+de+vacina+para+abertura+de+novas+vagas" in current_status_response.headers['Location']
+        # True until the world change
+        return (True, vaccines_only_for_entrepreneurs, current_status_response.status_code)
+    except Exception as e:
+        log.error(f"Oops... {e}")
+        return (True, False, 666)
 
 def main():
     log.info("We need to stay alive until the last fucking politician dies!")
