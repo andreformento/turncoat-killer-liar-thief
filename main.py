@@ -29,7 +29,7 @@ def send_message(message):
     log.info(f"message '{message}' sent")
     return response
 
-def do_i_need_to_kill_the_president():
+def do_we_need_impeachment_now():
     try:
         current_status_response = requests.get(
                 url=validation_url,
@@ -40,7 +40,7 @@ def do_i_need_to_kill_the_president():
         vaccines_only_for_entrepreneurs = current_status_response and \
             current_status_response.status_code == 301 and \
             current_status_response.headers and \
-            "Estamos+aguardando+novo+lote+de+vacina+para+abertura+de+novas+vagas" in current_status_response.headers['Location']
+            "mensagemvacina.aspx" in current_status_response.headers['Location']
         # True until the world change
         return (True, vaccines_only_for_entrepreneurs, current_status_response.status_code)
     except Exception as e:
@@ -48,9 +48,9 @@ def do_i_need_to_kill_the_president():
         return (True, False, 666)
 
 def main():
-    send_message("We need to stay alive until the last fucking politician dies! Up the Irons")
+    send_message("We need to stay alive until the last fucking politician falls! Up the Irons")
     while True:
-        (kill_now, vaccines_only_for_entrepreneurs, status_code) = do_i_need_to_kill_the_president()
+        (kill_now, vaccines_only_for_entrepreneurs, status_code) = do_we_need_impeachment_now()
         log.info(f"vaccines_only_for_entrepreneurs? {vaccines_only_for_entrepreneurs} :: {status_code}")
         if not vaccines_only_for_entrepreneurs:
             send_message(f"{status_code} será? https://pronto.blumenau.sc.gov.br/pronto/agendamentovacinacaointerno.aspx")
